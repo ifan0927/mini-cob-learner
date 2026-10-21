@@ -1,0 +1,21 @@
+package com.minicob.support;
+
+import com.minicob.loan.LoanRepository;
+import javax.sql.DataSource;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+@TestConfiguration(proxyBeanMethods = false)
+public class TestSupportConfiguration {
+
+    @Bean
+    TellerActivitySimulator tellerActivitySimulator(DataSource dataSource) {
+        return new TellerActivitySimulator(dataSource);
+    }
+
+    @Bean
+    TestLoans testLoans(LoanRepository loanRepository, JdbcTemplate jdbc) {
+        return new TestLoans(loanRepository, jdbc);
+    }
+}

@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: mini-cob
+  datasource:
+    # Every application context gets its own in-memory database.
+    url: jdbc:h2:mem:minicob-${random.uuid};DB_CLOSE_DELAY=-1;LOCK_TIMEOUT=10000
+    username: sa
+    password: ""
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: embedded
+
+mini-cob:
+  initial-business-date: 2026-04-16
+  customer-exposure-limit: 5000000
+  penalty-annual-rate: 0.073
+  cob:
+    worker-threads: 4
+    partition-size: 50
+    chunk-size: 10
+    retry-limit: 3
+    skip-limit: 100

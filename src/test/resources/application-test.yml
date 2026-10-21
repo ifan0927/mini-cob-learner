@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: true
+
+logging:
+  level:
+    root: WARN
+    org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: OFF
